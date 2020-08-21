@@ -18,7 +18,7 @@ class DataTest(TestCase):
 
         matches = True
         expected_matches = True
-        
+
         self.assertEqual(matches, expected_matches)
 
 
