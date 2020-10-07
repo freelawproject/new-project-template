@@ -48,6 +48,6 @@ setup(
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    install_requires=["six",],
+    install_requires=["six"],
     test_suite="tests",
 )
