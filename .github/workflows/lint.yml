@@ -34,14 +34,6 @@ jobs:
           echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
           echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
 
-      - run: |
-          echo $VIRTUAL_ENV
-          echo $PYTHONPATH
-          echo $PATH
-          which python
-          which pip
-          which flake8
-
       - name: Black Code Formatter
         uses: psf/black@stable
 
