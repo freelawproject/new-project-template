@@ -11,15 +11,11 @@ jobs:
         with:
           python-version: "3.8"
 
-      - name: Create virtualenv
-        run: |
-          python -m venv .venv
-          . ./.venv/bin/activate
-
       - name: Install Poetry
         uses: snok/install-poetry@v1.1.0
         with:
-          virtualenvs-create: false
+          virtualenvs-create: true
+          virtualenvs-in-project: true
 
       - name: Load cached venv
         id: cached-poetry-dependencies
@@ -31,6 +27,20 @@ jobs:
       - name: Install dependencies
         run: poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+
+      - name: Activate venv
+        run: |
+          echo "VIRTUAL_ENV=$GITHUB_WORKSPACE/.venv" >> $GITHUB_ENV
+          echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+          echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
+
+      - run: |
+          echo $VIRTUAL_ENV
+          echo $PYTHONPATH
+          echo $PATH
+          which python
+          which pip
+          which flake8
 
       - name: Black Code Formatter
         uses: psf/black@stable
@@ -46,7 +56,7 @@ jobs:
         uses: isort/isort-action@v0.1.0
 
       - name: pylint Error Checker
-        run: pylint -E -f colorized .
+        run: pylint -E -f colorized project_name
 
       - name: mypy Static Type Checker
         run: mypy .
@@ -76,8 +86,16 @@ jobs:
         run: poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
 
+      - name: Activate venv
+        run: |
+          echo "VIRTUAL_ENV=$GITHUB_WORKSPACE/.venv" >> $GITHUB_ENV
+          echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+          echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
+
       - name: pylint Generate Report
-        run: pylint -f json . | pylint-json2html -o pylint-report.html
+        run: |
+          pip install pylint-json2html
+          pylint -f json project_name | pylint-json2html -o pylint-report.html
 
       - name: Upload report
         uses: actions/upload-artifact@v2
