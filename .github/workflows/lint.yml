@@ -95,7 +95,8 @@ jobs:
       - name: pylint Generate Report
         run: |
           pip install pylint-json2html
-          pylint -f json project_name | pylint-json2html -o pylint-report.html
+          pylint --load-plugins=pylint_json2html -f jsonextended project_name > pylint-report.json
+          pylint-json2html -f jsonextended -o pylint-report.html pylint-report.json
 
       - name: Upload report
         uses: actions/upload-artifact@v2
