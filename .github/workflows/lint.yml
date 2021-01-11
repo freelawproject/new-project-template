@@ -85,13 +85,14 @@ jobs:
           echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
 
       - name: pylint Generate Report
-        run: |
-          pip install pylint-json2html
-          pylint --load-plugins=pylint_json2html -f jsonextended project_name > pylint-report.json
-          pylint-json2html -f jsonextended -o pylint-report.html pylint-report.json
+        run: >
+          set -o pipefail &&
+          pylint --load-plugins=pylint_json2html -f jsonextended project_name |
+          pylint-json2html -f jsonextended -o pylint-report.html
 
       - name: Upload report
         uses: actions/upload-artifact@v2
+        if: failure()
         with:
           name: pylint report
           path: pylint-report.html
