@@ -36,7 +36,7 @@ isort = "^5.7.0"
 mypy = "^0.812"
 pylint = "^2.7.2"
 wheel = "^0.35.1"
-pylint-json2html = "^0.2.0"
+pylint-json2html = "^0.3.0"
 
 [tool.black]
 include = '''.*\.pyi?$'''
