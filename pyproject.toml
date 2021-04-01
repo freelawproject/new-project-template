@@ -1,4 +1,5 @@
 [tool.poetry]
+version = "0.0.1"
 authors = ["Free Law Project <info@free.law>"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
@@ -21,7 +22,7 @@ maintainers = ["Free Law Project <info@free.law>"]
 name = "{{PROJECT_NAME}}"
 readme = "README.md"
 repository = "https://github.com/freelawproject/{{PROJECT_NAME}}"
-version = "0.0.1"
+include = ["eyecite/py.typed"]
 
 [tool.poetry.urls]
 "Organisation Homepage" = "https://free.law/"
