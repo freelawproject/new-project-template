@@ -34,7 +34,7 @@ black = "^22.1"
 flake8 = "^4.0.1"
 isort = "^5.10.1"
 mypy = "^0.950"
-pylint = "^2.13.0"
+pylint = "^2.13.7"
 wheel = "^0.35.1"
 pylint-json2html = "^0.4.0"
 
