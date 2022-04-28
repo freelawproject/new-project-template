@@ -34,6 +34,13 @@ jobs:
           echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
           echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
 
+      - name: Flynt f-string Formatter
+        run: >
+          flynt .
+          --line-length=79
+          --transform-concats
+          --fail-on-change
+
       - name: Black Code Formatter
         uses: psf/black@stable
 
