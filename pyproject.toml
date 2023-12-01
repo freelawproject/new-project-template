@@ -36,7 +36,7 @@ flake8 = "^5.0.4"
 isort = "^5.11.5"
 mypy = "^0.991"
 pylint = "^2.13.9"
-wheel = "^0.41.0"
+wheel = "^0.42.0"
 pre-commit = "^2.21.0"
 flynt = "^0.77"
 
