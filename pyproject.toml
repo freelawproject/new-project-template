@@ -28,7 +28,6 @@ version = "0.0.1"
 python = "^3.13"
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^0.991"
 wheel = "^0.41.0"
 pre-commit = "^2.21.0"
 
