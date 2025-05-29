@@ -1,35 +1,39 @@
-[tool.poetry]
-authors = ["Free Law Project <info@free.law>"]
-classifiers = [
-  "Development Status :: 5 - Production/Stable",
-  "Intended Audience :: Developers",
-  "Natural Language :: English",
-  "Operating System :: OS Independent",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.13",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
-  "Topic :: Software Development :: Libraries :: Python Modules",
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+  "setuptools",
 ]
-description = "{{PROJECT_DESCRIPTION}}"
-keywords = ["legal", "courts"]
-license = "BSD-2-Clause"
-maintainers = ["Free Law Project <info@free.law>"]
+
+[project]
 name = "{{PROJECT_NAME}}"
-readme = "README.md"
-repository = "https://github.com/freelawproject/{{PROJECT_NAME}}"
 version = "0.0.1"
+description = "{{PROJECT_DESCRIPTION}}"
+authors = [{ name = "Free Law Project", email = "info@free.law" }]
+requires-python = ">=3.13"
+readme = "README.md"
+license = "BSD-2-Clause"
+keywords = [
+    "legal",
+    "courts",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 
-[tool.poetry.urls]
-"Organisation Homepage" = "https://free.law/"
+urls.Repository = "https://github.com/freelawproject/{{PROJECT_NAME}}"
+urls."Organisation Homepage" = "https://free.law/"
 
-[tool.poetry.dependencies]
-python = "^3.13"
-
-[tool.poetry.group.dev.dependencies]
-wheel = "^0.41.0"
-pre-commit = "^2.21.0"
+[tool.setuptools]
+packages = [ "project_name" ]
 
 [tool.ruff]
 line-length = 79
@@ -69,7 +73,3 @@ lint.ignore = [
   # printf-string-formatting
   "UP031",
 ]
-
-[build-system]
-build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core>=1.0.0"]
